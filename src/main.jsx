@@ -1,3 +1,6 @@
+// React entry point
+// Responsible for bootstrapping the application into the DOM
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'

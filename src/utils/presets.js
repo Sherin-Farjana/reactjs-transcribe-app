@@ -1,3 +1,4 @@
+// Message types exchanged between main thread and Web Workers
 export const MessageTypes = {
     DOWNLOADING: "DOWNLOADING",
     LOADING: "LOADING",
@@ -7,12 +8,14 @@ export const MessageTypes = {
     INFERENCE_DONE: "INFERENCE_DONE",
 };
 
+// Generic loading statuses for UI state management
 export const LoadingStatus = {
     SUCCESS: "success",
     ERROR: "error",
     LOADING: "loading",
 };
 
+// Generic loading statuses for UI state management
 export const ModelNames = {
     WHISPER_TINY_EN: "openai/whisper-tiny.en",
     WHISPER_TINY: "openai/whisper-tiny",
@@ -22,6 +25,7 @@ export const ModelNames = {
     WHISPER_SMALL_EN: "openai/whisper-small.en",
 };
 
+// Mapping of language display names to NLLB language codes
 export const LANGUAGES = {
     "Acehnese (Arabic script)": "ace_Arab",
     "Acehnese (Latin script)": "ace_Latn",

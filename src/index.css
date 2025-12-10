@@ -1,9 +1,18 @@
-@import "tailwindcss";
+/* Inject Tailwind’s base styles (CSS reset + defaults) */
+@tailwind base;
 
+/* Inject component-level styles */
+@tailwind components;
+
+/* Inject component-level styles */
+@tailwind utilities;
+
+/* Global font defaults */
 * {
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Headings use display font */
 h1,
 h2,
 h3,
@@ -11,6 +20,7 @@ h3,
   font-family: 'Poppins', sans-serif;
 }
 
+/* Custom reusable shadows & button styles */
 .blueShadow {
   box-shadow: 3px 3px 0 0 #93c5fd;
 }
@@ -22,9 +32,28 @@ h3,
 }
 
 .specialBtn:hover {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
+/* Alternative themed button styles */
+.specialBtni {
+  background: white;
+  box-shadow: 0px 14px 55px rgba(255, 44, 44, 0.523);
+  transition-duration: 200ms;
+}
+
+.specialBtni:hover {
+  opacity: 0.8;
+}
+.specialBtng {
+  background: white;
+  box-shadow: 0px 14px 55px rgba(134, 134, 134, 0.35);
+  transition-duration: 200ms;
+}
+
+.specialBtng:hover {
+  opacity: 0.8;
+}
 .loading {
   animation: width 5s linear infinite;
   margin-right: auto;

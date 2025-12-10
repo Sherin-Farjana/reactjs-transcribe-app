@@ -1,3 +1,5 @@
+// Main application container
+// Handles application state and worker communication
 import { useState, useRef, useEffect } from 'react'
 import HomePage from './components/HomePage'
 import Header from './components/Header'
@@ -5,8 +7,10 @@ import FileDisplay from './components/FileDisplay'
 import Information from './components/Information'
 import Transcribing from './components/Transcribing'
 import { MessageTypes } from './utils/presets'
+import Footer from './components/Footer'
 
 function App() {
+  // Core application states
   const [file, setFile] = useState(null)
   const [audioStream, setAudioStream] = useState(null)
   const [output, setOutput] = useState(null)
@@ -21,8 +25,10 @@ function App() {
     setAudioStream(null)
   }
 
+  // Initialize Whisper worker once
   const worker = useRef(null)
 
+  // Initialize Whisper worker once
   useEffect(() => {
     if (!worker.current) {
       worker.current = new Worker(new URL('./utils/whisper.worker.js', import.meta.url), {
@@ -30,6 +36,7 @@ function App() {
       })
     }
 
+     // Handle messages from worker thread
     const onMessageReceived = async (e) => {
       switch (e.data.type) {
         case 'DOWNLOADING':
@@ -79,9 +86,11 @@ function App() {
   }
 
   return (
-    <div className='flex flex-col max-w-[1000px] mx-auto w-full'>
-      <section className='min-h-screen flex flex-col'>
+    <div className='flex flex-col max-w-[1000px] mx-auto w-full '>
+      <section className='min-h-screen flex flex-col '>
         <Header />
+
+        {/* Conditional UI rendering based on app state */}
         {output ? (
           <Information output={output} finished={finished}/>
         ) : loading ? (
@@ -91,8 +100,11 @@ function App() {
         ) : (
           <HomePage setFile={setFile} setAudioStream={setAudioStream} />
         )}
+
+      <Footer/>
+      
       </section>
-      <footer></footer>
+      
     </div>
   )
 }
